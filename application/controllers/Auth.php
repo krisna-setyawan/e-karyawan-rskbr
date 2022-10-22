@@ -5,7 +5,7 @@ class Auth extends CI_Controller
 {
 	public function index()
 	{
-		$sesion = $this->session->userdata('username');
+		$sesion = $this->session->userdata('new_ekaryawan');
 		if ($sesion) {
 			redirect('profil');
 		} else {
@@ -39,6 +39,7 @@ class Auth extends CI_Controller
 					'username' => $user['username'],
 					'nama_user' => $user['nama_user'],
 					'id_karyawan' => $user['id_karyawan'],
+					'new_ekaryawan' => 'ok',
 				];
 				$this->session->set_userdata($data);
 				redirect('profil');
@@ -60,7 +61,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
-		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('new_ekaryawan');
 
 		redirect('auth');
 	}
